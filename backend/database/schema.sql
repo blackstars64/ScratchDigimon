@@ -8,7 +8,7 @@ CREATE TABLE `Digimons` (
 CREATE TABLE `user` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
-  `mail` VARCHAR(50) NOT NULL,
+  `mail` VARCHAR(50)  NOT NULL UNIQUE,
   `password` VARCHAR(50) NOT NULL,
   `digi_point` INT DEFAULT '0',
   `is_admin` BOOLEAN DEFAULT FALSE
