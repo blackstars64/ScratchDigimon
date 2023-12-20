@@ -6,3 +6,10 @@ body {
   background-repeat: no-repeat;
   background-size: content;
 }
+
+header {
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
