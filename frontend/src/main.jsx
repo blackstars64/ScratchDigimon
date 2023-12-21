@@ -8,6 +8,7 @@ import Page from "./pages/Page";
 import Game from "./pages/Game";
 import Instruction from "./pages/Instruction";
 import Collection from "./pages/Collection";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/page/collection",
         element: <Collection />,
+      },
+      {
+        path: "/page/profile",
+        element: <Profile />,
       },
     ],
   },

@@ -9,6 +9,7 @@ function App() {
     <>
       <header>
         <section className="top-header">
+          <p>profile</p>
           <p>Dp:</p>
           <Menu />
         </section>

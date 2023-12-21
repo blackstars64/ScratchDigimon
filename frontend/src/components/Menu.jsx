@@ -73,6 +73,17 @@ function Menu() {
           </li>
           <li>
             <Link
+              to="/page/profile"
+              onClick={() => {
+                toggleNav();
+              }}
+              className="navbar-li"
+            >
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/page/instruction"
               onClick={() => {
                 toggleNav();
