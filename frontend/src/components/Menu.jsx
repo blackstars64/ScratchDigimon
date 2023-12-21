@@ -9,11 +9,7 @@ function Menu() {
   const toggleNav = () => {
     setIsClicked(!isClicked);
   };
-  const handleKeyDown = (event) => {
-    if (event.key === "t" / "T") {
-      setIsClicked(!isClicked);
-    }
-  };
+
   return (
     <nav className={isClicked ? "nav" : "navbordernone"}>
       {isClicked ? (
@@ -21,7 +17,6 @@ function Menu() {
           type="button"
           className="menu_patamon"
           onClick={() => toggleNav()}
-          onKeyDown={handleKeyDown}
         >
           <img src={patamon} alt="menu burger" />
         </button>
@@ -30,7 +25,6 @@ function Menu() {
           type="button"
           className="menu_digivice"
           onClick={() => toggleNav()}
-          onKeyDown={handleKeyDown}
         >
           <img src={digivice} alt="close menu burger" />
         </button>

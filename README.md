@@ -77,3 +77,5 @@ Don't use any public folder on your frontend. This folder won't be accessible on
 
 If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
 Then, go on your specific project and run  `docker compose logs -t -f`.
+
+https://digimon.fandom.com/fr/wiki/Agumon_(Adventure:)
