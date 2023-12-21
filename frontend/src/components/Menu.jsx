@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import patamon from "../assets/patamon.png";
@@ -11,23 +9,33 @@ function Menu() {
   const toggleNav = () => {
     setIsClicked(!isClicked);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "t" / "T") {
+      setIsClicked(!isClicked);
+    }
+  };
   return (
     <nav className={isClicked ? "nav" : "navbordernone"}>
       {isClicked ? (
-        <img
-          src={patamon}
-          alt="menu burger"
+        <button
+          type="button"
           className="menu_patamon"
           onClick={() => toggleNav()}
-        />
+          onKeyDown={handleKeyDown}
+        >
+          <img src={patamon} alt="menu burger" />
+        </button>
       ) : (
-        <img
-          src={digivice}
-          alt="close menu burger"
+        <button
+          type="button"
           className="menu_digivice"
           onClick={() => toggleNav()}
-        />
+          onKeyDown={handleKeyDown}
+        >
+          <img src={digivice} alt="close menu burger" />
+        </button>
       )}
+
       {isClicked && (
         <ul>
           <li>
