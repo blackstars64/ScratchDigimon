@@ -30,16 +30,6 @@ const seed = async () => {
       "SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1)"
     );
 
-    /* *******************************USER************************************** */
-
-    queries.push(
-      database.query(`insert into user (username, mail, password) values 
-        ('blackstars', 'nelson.64@live.fr', 'admin'),
-        ('test1', 'test1@live.fr', 'test1'),
-        ('testtesttest', 'testtesttest@live.fr', 'testtesttest')
-        `)
-    );
-
     /* *******************************DIGIMONS************************************** */
 
     queries.push(
