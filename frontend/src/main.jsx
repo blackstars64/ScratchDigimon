@@ -12,27 +12,27 @@ import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
   },
   {
-    path: "/page",
+    path: "/",
     element: <Page />,
     children: [
       {
-        path: "/page/game",
+        path: "/game",
         element: <Game />,
       },
       {
-        path: "/page/instruction",
+        path: "/instruction",
         element: <Instruction />,
       },
       {
-        path: "/page/collection",
+        path: "/collection",
         element: <Collection />,
       },
       {
-        path: "/page/profile",
+        path: "/profile",
         element: <Profile />,
       },
     ],

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function PlayButtom() {
   return (
-    <Link to="/page/game">
+    <Link to="/game">
       <p>PlayButtom</p>
     </Link>
   );

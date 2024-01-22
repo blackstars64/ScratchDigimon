@@ -45,7 +45,7 @@ function Menu() {
           </li>
           <li>
             <Link
-              to="/page/game"
+              to="/game"
               onClick={() => {
                 toggleNav();
               }}
@@ -56,7 +56,7 @@ function Menu() {
           </li>
           <li>
             <Link
-              to="/page/collection"
+              to="/collection"
               onClick={() => {
                 toggleNav();
               }}
@@ -67,7 +67,7 @@ function Menu() {
           </li>
           <li>
             <Link
-              to="/page/profile"
+              to="/profile"
               onClick={() => {
                 toggleNav();
               }}
@@ -78,7 +78,7 @@ function Menu() {
           </li>
           <li>
             <Link
-              to="/page/instruction"
+              to="/instruction"
               onClick={() => {
                 toggleNav();
               }}
