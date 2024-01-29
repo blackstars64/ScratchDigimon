@@ -1,41 +1,25 @@
-import Counter from "./components/Counter";
-import logo from "./assets/logo.svg";
-
-import "./App.css";
+import { useState } from "react";
+import Connect from "./components/Connect";
+import "./scss/App.scss";
+import SignUp from "./components/SignUp";
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const handleSignIn = () => {
+    setIsSignedIn(!isSignedIn);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React !</p>
-
-        <Counter />
-
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <h1> ScratchDimimon </h1>
+      {!isSignedIn && <Connect />}
+      {isSignedIn && <SignUp handleSignIn={handleSignIn} />}
+      {!isSignedIn && (
+        <button type="button" onClick={handleSignIn}>
+          Sign up
+        </button>
+      )}
+    </>
   );
 }
 

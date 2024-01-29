@@ -1,3 +1,4 @@
+const path = require("path");
 // Load the express module to create a web application
 
 const express = require("express");
@@ -25,7 +26,6 @@ const app = express();
 // 4. Be sure to only have URLs in the array with domains from which you want to allow requests.
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
-/*
 const cors = require("cors");
 
 app.use(
@@ -34,10 +34,9 @@ app.use(
       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
       "http://mysite.com",
       "http://another-domain.com",
-    ]
+    ],
   })
 );
-*/
 
 /* ************************************************************************* */
 
@@ -54,7 +53,7 @@ app.use(
 
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
@@ -107,16 +106,27 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
+// eslint-disable-next-line no-unused-vars
 const reactBuildPath = `${__dirname}/../../frontend/dist`;
 
 // Serve react resources
 
-app.use(express.static(reactBuildPath));
+// app.use(express.static(reactBuildPath));
 
 // Redirect unhandled requests to the react index file
 
-app.get("*", (req, res) => {
-  res.sendFile(`${reactBuildPath}/index.html`);
+// app.get("*", (req, res) => {
+//   res.sendFile(`${reactBuildPath}/index.html`);
+// });
+
+app.use("*", (req, res) => {
+  if (req.originalUrl.includes("assets")) {
+    res.sendFile(
+      path.resolve(__dirname, `../../frontend/dist/${req.originalUrl}`)
+    );
+  } else {
+    res.sendFile(path.resolve(__dirname, `../../frontend/dist/index.html`));
+  }
 });
 
 /* ************************************************************************* */

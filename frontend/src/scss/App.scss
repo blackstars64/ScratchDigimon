@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Farsan&family=Playpen+Sans:wght@500&family=Roboto:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playpen Sans", cursive;
+  // font-family: "Roboto", sans-serif;
+  // font-family: "Farsan", cursive;
+}
+
+body {
+  box-sizing: border-box;
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+header {
+  .top-header {
+    display: flex;
+    gap: 1rem;
+    margin-top: 5px;
+  }
+  h1 {
+    text-align: center;
+  }
+}
