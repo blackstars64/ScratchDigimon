@@ -8,32 +8,30 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useSessionStorage("token", null); // JWT
+  const [token, setToken] = useSessionStorage("token", "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const login = async (username, email, password) => {
+  const login = async (email, password) => {
     try {
-      setLoading(true);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         {
+          email,
+          password,
+        },
+        {
           headers: { "Content-Type": "application/json" },
-          body: {
-            username,
-            email,
-            password,
-          },
         }
       );
       if (res.status === 200) {
-        const data = await res.json();
+        const data = await res.data;
         setToken(data.token);
-        setLoading(false);
+      } else {
+        throw new Error("Unauthorized");
       }
     } catch (err) {
       setError(err);
-      setLoading(false);
     }
   };
 
@@ -68,13 +66,45 @@ function AuthProvider({ children }) {
     }
   };
 
+  const register = async (username, email, password) => {
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (res.status === 200) {
+        setLoading(false);
+      }
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     auth();
   }, [token]);
 
   const value = useMemo(
-    () => ({ user, token, loading, error, login, logout }),
-    [user, token, loading, error]
+    () => ({
+      user,
+      token,
+      loading,
+      error,
+      login,
+      logout,
+      register,
+    }),
+    [user, token, loading, error, login, logout, register]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
