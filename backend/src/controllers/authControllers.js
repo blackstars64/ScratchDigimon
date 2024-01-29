@@ -16,6 +16,10 @@ const login = async (req, res, next) => {
 
     if (verified) {
       delete user.password;
+      delete user.register_date;
+      delete user.username;
+      delete user.email;
+      delete user.digi_point;
       const token = await jwt.sign(
         {
           id: user.id,
@@ -24,7 +28,8 @@ const login = async (req, res, next) => {
         process.env.APP_SECRET,
         { expiresIn: "1h" }
       );
-
+      delete user.is_admin;
+      delete user.id;
       res.json({
         token,
         user,
