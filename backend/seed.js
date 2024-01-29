@@ -31,6 +31,11 @@ const seed = async () => {
     );
 
     /* *******************************DIGIMONS************************************** */
+    queries.push(
+      database.query(
+        `insert into user (username, email, password, register_date, is_admin, digi_point) values ('Blackstars', 'admin@admin.am', '$argon2id$v=19$m=19456,t=2,p=1$QUgu6oUUEptpOWItS/m1YA$/PY0SeFS7omKKWUxc3Q/u8qxFm+jc9TxB5Bz6WxWLrw', '2021-05-05', 1, 999999)`
+      )
+    );
 
     queries.push(
       database.query(`insert into digimons (name, img, level) values 

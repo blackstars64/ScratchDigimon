@@ -25,6 +25,14 @@ class UserManager extends AbstractManager {
     return result;
   }
 
+  async read(id) {
+    const [result] = await this.database.query(
+      `select id, username, email, register_date, is_admin, digi_point from ${this.table} where id LIKE ?`,
+      [id]
+    );
+    return result;
+  }
+
   async getByMail(mail) {
     const [result] = await this.database.query(
       `select * from ${this.table} where mail = ?`,
@@ -42,7 +50,7 @@ class UserManager extends AbstractManager {
 
   async readDate(registerDate) {
     const [rows] = await this.database.query(
-      `SELECT id, nickname, email, register_date, is_admin, digi_point FROM ${this.table} WHERE register_date LIKE ?`,
+      `SELECT id, username, email, register_date, is_admin, digi_point FROM ${this.table} WHERE register_date LIKE ?`,
       [`%${registerDate}%`]
     );
     return rows;
@@ -54,15 +62,29 @@ class UserManager extends AbstractManager {
   }
   /* ******************************* Update ****************************** */
 
-  async update(id, user) {
-    const [result] = await this.database.query(
-      `UPDATE ${this.table} SET username = ?, email = ?, password = ?
-        WHERE id = ?`,
-      [user.username, user.email, user.password, id]
-    );
-    return result;
-  }
+  async update(id, updatesFields) {
+    const allowedFields = ["username", "email", "password"];
 
+    const fieldsToUpdate = Object.keys(updatesFields).filter((field) =>
+      allowedFields.includes(field)
+    );
+
+    const values = fieldsToUpdate.map((field) => updatesFields[field]);
+
+    if (fieldsToUpdate.length === 0) {
+      return 0;
+    }
+
+    const updateQuery = `UPDATE ${this.table} SET ${fieldsToUpdate
+      .map((field) => `${field} = ?`)
+      .join(", ")} WHERE id = ?`;
+
+    values.push(id);
+
+    const [result] = await this.database.query(updateQuery, values);
+
+    return result.affectedRows;
+  }
   /* ******************************* Delete ****************************** */
 
   async delete(id) {

@@ -4,7 +4,7 @@ const tables = require("../tables");
 
 const browse = async (req, res, next) => {
   try {
-    const user = await tables.user.getAll();
+    const user = await tables.user.readAll();
 
     res.json(user);
   } catch (err) {
@@ -36,8 +36,8 @@ const read = async (req, res, next) => {
 };
 const readUser = async (req, res, next) => {
   try {
-    const { username } = await req.query;
-    const users = await tables.user.getByUsername(username);
+    const { name } = await req.query;
+    const users = await tables.user.getByUsername(name);
 
     if (users == null) {
       res.sendStatus(404);
@@ -51,8 +51,8 @@ const readUser = async (req, res, next) => {
 
 const readDate = async (req, res, next) => {
   try {
-    const { date } = await req.query;
-    const users = await tables.user.readDate(date);
+    const { registerDate } = await req.query;
+    const users = await tables.user.readDate(registerDate);
 
     if (users == null) {
       res.sendStatus(404);
@@ -69,11 +69,11 @@ const readDate = async (req, res, next) => {
 const add = async (req, res, next) => {
   const registerDate = new Date();
   try {
-    const { username, mail, password } = req.body;
+    const { username, email, password } = req.body;
 
     const newUser = await tables.user.create({
       username,
-      mail,
+      email,
       password,
       registerDate,
     });
@@ -86,20 +86,43 @@ const add = async (req, res, next) => {
 
 /* ******************************* Update ****************************** */
 
-const edit = async (req, res, next) => {
+const edit = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
+    if (!req.body) {
+      return res.status(400).json({ message: "Empty body" });
+    }
+
     const { username, email, password } = req.body;
 
-    const updatedUser = await tables.user.update(id, {
-      username,
-      email,
-      password,
-    });
+    const haveUser = await tables.user.read(id);
 
-    res.json(updatedUser);
+    if (!haveUser) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    const updatedFields = {};
+
+    if (username !== undefined) {
+      updatedFields.username = username;
+    }
+    if (email !== undefined) {
+      updatedFields.email = email;
+    }
+    if (password !== undefined) {
+      updatedFields.password = password;
+    }
+
+    const affectedRows = await tables.user.update(id, updatedFields);
+
+    if (affectedRows === 0) {
+      return res.status(500).json({ message: "Update fail" });
+    }
+
+    const editeduser = await tables.user.read(id);
+    return res.json({ message: "Success Update", user: editeduser });
   } catch (err) {
-    next(err);
+    return res.status(500).json({ message: "Error on user update" });
   }
 };
 

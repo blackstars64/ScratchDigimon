@@ -7,12 +7,12 @@ CREATE TABLE `Digimons` (
 
 CREATE TABLE `user` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(50) NOT NULL,
+  `username` VARCHAR(50) NOT NULL UNIQUE,
   `email` VARCHAR(50)  NOT NULL UNIQUE,
-  `password` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `is_admin` BOOLEAN DEFAULT FALSE,
   `digi_point` INT DEFAULT '0',
-  `register_date` DATE NOT NULL,
-  `is_admin` BOOLEAN DEFAULT FALSE
+  `register_date` DATE NOT NULL
 );
 
 CREATE TABLE `messages` (
