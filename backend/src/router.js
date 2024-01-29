@@ -28,7 +28,7 @@ router.delete("/users/:id", userControllers.deleteUser);
 
 /* ******************************** AUTH *********************************** */
 
-router.get("/login", authControllers.login);
+router.post("/login", authControllers.login);
 
 /* ******************************** DIGIMONS *********************************** */
 // GET

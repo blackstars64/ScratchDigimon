@@ -33,12 +33,12 @@ class UserManager extends AbstractManager {
     return result;
   }
 
-  async getByMail(mail) {
-    const [result] = await this.database.query(
-      `select * from ${this.table} where mail = ?`,
-      [mail]
+  async readEmail(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email = ?`,
+      [email]
     );
-    return result[0];
+    return rows[0];
   }
 
   async readAll() {
