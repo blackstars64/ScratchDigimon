@@ -5,6 +5,8 @@ class MessagesManager extends AbstractManager {
     super({ table: "messages" });
   }
 
+  /* ******************************* Create ****************************** */
+
   async create(message) {
     const [result] = await this.database.query(
       `insert into ${this.table} (message, user_id, received) values (?,?,?)`,
@@ -12,6 +14,8 @@ class MessagesManager extends AbstractManager {
     );
     return result.insertId;
   }
+
+  /* ******************************* Read ****************************** */
 
   async getAll() {
     const [result] = await this.database.query(`select * from ${this.table}`);
@@ -26,13 +30,17 @@ class MessagesManager extends AbstractManager {
     return result;
   }
 
+  /* ******************************* Update ****************************** */
+
   async update(id, message) {
     const [result] = await this.database.query(
-      `update ${this.table} set message = ?, user_id = ?, received = ? where id = ?`,
-      [message.message, message.userId, message.received, id]
+      `update ${this.table} set message = ? where id = ?`,
+      [message.message, id]
     );
     return result.affectedRows > 0;
   }
+
+  /* ******************************* Delete ****************************** */
 
   async delete(id) {
     const [result] = await this.database.query(
