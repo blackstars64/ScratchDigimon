@@ -10,6 +10,7 @@ import Instruction from "./pages/Instruction";
 import Collection from "./pages/Collection";
 import Profile from "./pages/Profile";
 import { AuthProvider } from "./context/AuthContext";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Page />,
     children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
       {
         path: "/game",
         element: <Game />,

@@ -1,14 +1,17 @@
 import { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function Connect() {
   const { login } = useContext(AuthContext);
   const refEmail = useRef();
   const refPassword = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(refEmail.current.value, refPassword.current.value);
+    navigate("/home");
   };
 
   return (
