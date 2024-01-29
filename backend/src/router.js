@@ -8,6 +8,7 @@ const { hashPassword, verifyToken } = require("./services/auth");
 const userControllers = require("./controllers/userControllers");
 const authControllers = require("./controllers/authControllers");
 const digimonsControllers = require("./controllers/digimonsControllers");
+const messagesControllers = require("./controllers/messagesControllers");
 
 /* ******************************** USER *********************************** */
 // GET
@@ -45,6 +46,21 @@ router.put("/digimons/:id", digimonsControllers.edit);
 
 // DELETE
 router.delete("/digimons/:id", digimonsControllers.deleted);
+
+/* ******************************** MESSAGES *********************************** */
+// GET
+router.get("/messages", messagesControllers.browse);
+router.get("/messages/:id", messagesControllers.read);
+
+// POST
+router.post("/messages", messagesControllers.add);
+
+// PUT
+router.put("/messages/:id", messagesControllers.edit);
+
+// DELETE
+router.delete("/messages/del/:id", messagesControllers.deleteMessage);
+router.delete("/messages/delUser/:id", messagesControllers.deleteUser);
 
 /* ************************************************************************* */
 router.use(verifyToken);
