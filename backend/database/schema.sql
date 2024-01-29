@@ -8,9 +8,10 @@ CREATE TABLE `Digimons` (
 CREATE TABLE `user` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
-  `mail` VARCHAR(50)  NOT NULL UNIQUE,
+  `email` VARCHAR(50)  NOT NULL UNIQUE,
   `password` VARCHAR(50) NOT NULL,
   `digi_point` INT DEFAULT '0',
+  `register_date` DATE NOT NULL,
   `is_admin` BOOLEAN DEFAULT FALSE
 );
 

@@ -3,20 +3,25 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
 
-// Import itemControllers module for handling item-related operations
-const itemControllers = require("./controllers/itemControllers");
+const userControllers = require("./controllers/userControllers");
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
+/* ******************************** USER *********************************** */
+// GET
+router.get("/users", userControllers.browse);
+router.get("/users/all", userControllers.readAllUsers);
+router.get("/users/username", userControllers.readUser);
+router.get("/users/date", userControllers.readDate);
+router.get("/users/:id", userControllers.read);
 
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
+// PUT
+router.put("/users/:id", userControllers.edit);
 
-// Route to add a new item
-router.post("/items", itemControllers.add);
+// POST
+router.post("/users", userControllers.add);
+
+// DELETE
+router.delete("/users/:id", userControllers.deleteUser);
 
 /* ************************************************************************* */
 
