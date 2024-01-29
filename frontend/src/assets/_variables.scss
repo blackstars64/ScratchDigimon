@@ -1,0 +1,20 @@
+@font-face {
+  font-family: BalonkuRegular;
+  src: url(../assets/path/BalonkuRegular-la1w.otf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: QuartzoBold;
+  src: url(../assets/path/QuartzoBold-W9lv.ttf);
+  font-weight: 100;
+}
+
+$BalonkuRegular: BalonkuRegular;
+$QuartzoBold: QuartzoBold;
+$colorViolet: #58347c;
+$colorVioletDark: #7d50a9;
+$colorwhite: #ffffff;
+$colorBlack: #000000;
+$backgroundViolet: rgba(127, 97, 165, 0.46);
+$backgroundGrey: #898989c2;
+$borderBlack: 2px solid #000000;

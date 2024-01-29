@@ -1,6 +1,7 @@
 import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import "../scss/Connect.scss";
 
 function Connect() {
   const { login } = useContext(AuthContext);
@@ -15,26 +16,28 @@ function Connect() {
   };
 
   return (
-    <section className="app-login">
-      <h2>Connect</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+    <section className="connect">
+      <h2 className="connect-h2">Sign in</h2>
+      <form className="connect-form" onSubmit={handleSubmit}>
         <input
+          className="connect-input"
           type="email"
           id="email"
           ref={refEmail}
-          placeholder="Enter your email"
+          placeholder="Email"
           required
         />
-        <label htmlFor="password">Password</label>
         <input
+          className="connect-input"
           type="password"
           id="password"
           ref={refPassword}
-          placeholder="Enter your password"
+          placeholder="Password"
           required
         />
-        <button type="submit">Connect</button>
+        <button className="connect-btn" type="submit">
+          Connect
+        </button>
       </form>
     </section>
   );
