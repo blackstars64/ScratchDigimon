@@ -5,10 +5,12 @@
 // Import the manager modules responsible for handling data operations on the tables
 const UserManager = require("./models/UserManager");
 const MessagesManager = require("./models/MessagesManager");
+const DigimonsManager = require("./models/DigimonsManager");
 
 const managers = [
   UserManager,
   MessagesManager,
+  DigimonsManager,
   // Add other managers here
 ];
 
