@@ -42,7 +42,7 @@
       border-radius: 20px;
       padding: 1px 10px;
       font-size: clamp(0.3em, 5vw, 1em);
-      cursor: pointer;
+      cursor: $cursorMain;
       &:hover {
         box-shadow: 0px 0px 10px 0px $colorBlack;
       }
@@ -91,7 +91,7 @@
     border-radius: 20px;
     padding: 1px 10px;
     font-size: clamp(0.3em, 5vw, 1em);
-    cursor: pointer;
+    cursor: $cursorMain;
     &:hover {
       box-shadow: 0px 0px 10px 0px $colorBlack;
     }
