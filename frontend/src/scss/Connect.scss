@@ -26,7 +26,7 @@
       border: $borderBlack;
       border-radius: 10px;
       padding: 5px 10px;
-      font-size: clamp(1em, 5vw, 2em);
+      font-size: clamp(1em, 5vw, 1.8em);
       &:focus {
         outline: none;
         color: $colorBlack;

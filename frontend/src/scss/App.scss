@@ -16,7 +16,7 @@ body {
   h1 {
     font-family: $BalonkuRegular;
     text-align: center;
-    font-size: clamp(1.8em, 5vw, 3em);
+    font-size: clamp(1.8em, 5vw, 4em);
     color: $colorViolet;
     margin-top: 1rem;
   }
@@ -45,7 +45,7 @@ body {
     align-items: center;
     .app-terriermon {
       width: 80%;
-      margin-top: -1.5rem;
+      margin-top: -2rem;
       margin-bottom: 1rem;
       margin-left: 2%;
     }
