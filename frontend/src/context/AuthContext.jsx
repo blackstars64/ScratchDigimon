@@ -46,24 +46,28 @@ function AuthProvider({ children }) {
     }
 
     const decodedToken = jwtDecode(token);
-
-    try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users/${decodedToken.id}`,
-        {
-          headers: { "Content-Type": "application/json", Authorization: token },
-        }
-      );
-      if (!res.ok) {
-        throw new Error("Unauthorized");
-      }
-      const data = await res.json();
-      setUser(data);
-      return data;
-    } catch (err) {
-      setError(err);
+    if (decodedToken.exp * 1000 < Date.now()) {
+      setToken(null);
       return null;
     }
+    if (token) {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/users/${decodedToken.id}`
+        );
+
+        if (res.status !== 200) {
+          throw new Error("Unauthorized");
+        }
+
+        const [data] = await res.data;
+        return setUser(data);
+      } catch (err) {
+        setError(err);
+        return null;
+      }
+    }
+    return null;
   };
 
   const register = async (username, email, password) => {
