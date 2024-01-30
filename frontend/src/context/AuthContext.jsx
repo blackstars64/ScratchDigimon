@@ -44,7 +44,6 @@ function AuthProvider({ children }) {
     if (!token) {
       return null;
     }
-
     const decodedToken = jwtDecode(token);
     if (decodedToken.exp * 1000 < Date.now()) {
       setToken(null);
@@ -67,6 +66,7 @@ function AuthProvider({ children }) {
         return null;
       }
     }
+
     return null;
   };
 

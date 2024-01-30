@@ -1,12 +1,30 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import mafumafu from "../assets/mafumafu-mini.png";
+import terriermon from "../assets/terriermon.gif";
 import adminPanel from "../assets/admin.png";
 import "../scss/Connect.scss";
 import "../scss/Profile.scss";
 
 function Profile() {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  if (!token) {
+    const navigate = useNavigate();
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+    return (
+      <section className="app-start">
+        <h1> DigiScratch </h1>
+        <p className="redirecting">you're not logged in...</p>
+        <div className="app-img-btn">
+          <img className="app-terriermon" src={terriermon} alt="terriermon" />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="connect">
       <h2 className="connect-h2">Profile</h2>
