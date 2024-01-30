@@ -13,6 +13,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  cursor: $cursor;
   h1 {
     font-family: $BalonkuRegular;
     text-align: center;
@@ -61,7 +62,7 @@ body {
       border-radius: 20px;
       padding: 2px 15px;
       font-size: clamp(1.2em, 5vw, 2em);
-      cursor: pointer;
+      cursor: $cursorMain;
       &:hover {
         box-shadow: 0px 0px 10px 0px $colorBlack;
       }
@@ -70,9 +71,45 @@ body {
 }
 
 header {
+  width: 90vw;
   .top-header {
     display: flex;
-    gap: 1rem;
+    align-items: baseline;
+    gap: 0.5rem;
     margin-top: 5px;
+    .header-profile {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .header-img {
+        width: clamp(60px, 11vw, 100px);
+        height: clamp(60px, 11vw, 100px);
+        border-radius: 50%;
+        border: 1px solid $colorVioletDark;
+      }
+      .header-username {
+        position: relative;
+        top: -10px;
+        font-size: clamp(0.8em, 2.5vw, 1.5em);
+        background: $backgroundGrey;
+        border-radius: 20px 0 20px 0;
+        padding: 0 10px;
+        border: 1px solid $colorVioletDark;
+      }
+    }
+    .header-dp {
+      font-weight: 900;
+      color: $colorVioletDark;
+      box-shadow: $boxShadow;
+      border-radius: 20px;
+      padding: 2px 15px;
+      font-size: clamp(1em, 2.5vw, 1.5em);
+    }
+  }
+}
+.home {
+  .home-img {
+    width: clamp(13rem, 44vw, 24rem);
+    cursor: $cursorMain;
   }
 }

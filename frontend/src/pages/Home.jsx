@@ -1,5 +1,14 @@
+import { Link } from "react-router-dom";
+import agumonPlay from "../assets/agumon-play.png";
+
 function Home() {
-  return <p>home</p>;
+  return (
+    <section className="home">
+      <Link to="/game">
+        <img className="home-img" src={agumonPlay} alt="play" />
+      </Link>
+    </section>
+  );
 }
 
 export default Home;
