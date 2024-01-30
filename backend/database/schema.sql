@@ -29,6 +29,6 @@ CREATE TABLE `collected` (
 
 ALTER TABLE `messages` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `collected` ADD FOREIGN KEY (`digimon_id`) REFERENCES `Digimons` (`id`);
+ALTER TABLE `collected` ADD FOREIGN KEY (`digimon_id`) REFERENCES `digimons` (`id`);
 
 ALTER TABLE `collected` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
