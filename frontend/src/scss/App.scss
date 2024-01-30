@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Farsan&family=Playpen+Sans:wght@500&family=Roboto:wght@100&display=swap");
+@import "../assets/_variables.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Playpen Sans", cursive;
-  // font-family: "Roboto", sans-serif;
-  // font-family: "Farsan", cursive;
 }
 
 body {
@@ -16,6 +13,55 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  h1 {
+    font-family: $BalonkuRegular;
+    text-align: center;
+    font-size: clamp(1.8em, 5vw, 4em);
+    color: $colorViolet;
+    margin-top: 1rem;
+  }
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+
+  .app-img-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .app-terriermon {
+      width: 80%;
+      margin-top: -2rem;
+      margin-bottom: 1rem;
+      margin-left: 2%;
+    }
+    .app-btn {
+      background-color: $colorVioletDark;
+      border: $borderBlack;
+      color: $colorwhite;
+      border-radius: 20px;
+      padding: 2px 15px;
+      font-size: clamp(1.2em, 5vw, 2em);
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 0px 10px 0px $colorBlack;
+      }
+    }
+  }
 }
 
 header {
@@ -23,8 +69,5 @@ header {
     display: flex;
     gap: 1rem;
     margin-top: 5px;
-  }
-  h1 {
-    text-align: center;
   }
 }
