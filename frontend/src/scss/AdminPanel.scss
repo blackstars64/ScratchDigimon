@@ -1,0 +1,120 @@
+@import "../assets/variables.scss";
+
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  .admin-user {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(194, 0, 0);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.386);
+  }
+  .admin-search {
+    background: $backgroundGrey;
+    border: 3px solid rgb(127, 4, 4);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: clamp(1em, 5vw, 1.8em);
+    &:focus {
+      outline: none;
+      color: $colorBlack;
+      font-weight: 700;
+    }
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.461);
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 88vw;
+
+    .admin-contenair-form {
+      position: absolute;
+      background: $backgroundGrey;
+      border: $borderBlack;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: $boxShadow;
+      width: 90vw;
+
+      .admin-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .admin-input {
+          background: rgb(129, 95, 172);
+          border: $borderBlack;
+          border-radius: 10px;
+          padding: 5px 10px;
+          font-size: clamp(1em, 5vw, 1.8em);
+          text-align: center;
+          width: 70vw;
+          color: $colorwhite;
+          &:focus {
+            outline: none;
+            color: $colorBlack;
+          }
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.461);
+            font-weight: 700;
+            text-align: center;
+          }
+        }
+        .admin-submit {
+          background-color: rgb(231, 81, 81);
+          border: $borderBlack;
+          color: $colorwhite;
+          border-radius: 20px;
+          padding: 2px 15px;
+          font-size: clamp(1.2em, 5vw, 2em);
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0px 0px 10px 0px $colorBlack;
+          }
+        }
+      }
+    }
+
+    tr {
+      padding: 0.2rem;
+      text-align: center;
+
+      th {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        border: $borderBlack;
+        color: $colorViolet;
+        background: $backgroundGrey;
+      }
+      td {
+        background: $backgroundGrey;
+        border: $borderBlack;
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        color: $colorwhite;
+        .admin-img {
+          width: clamp(50px, 10vw, 80px);
+        }
+      }
+      .admin-none {
+        border: none;
+        background: none;
+        color: rgba(0, 0, 0, 0);
+      }
+
+      .admin-edit {
+        margin-top: 22px;
+        padding: 7px;
+        cursor: pointer;
+        border-radius: 10px;
+        color: rgba(0, 0, 0, 0);
+        background: url(../assets/crayon.png) no-repeat center;
+      }
+    }
+  }
+}

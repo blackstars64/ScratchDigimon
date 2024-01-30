@@ -11,6 +11,7 @@ import Collection from "./pages/Collection";
 import Profile from "./pages/Profile";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
+import AdminPanel from "./pages/AdminPanel";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
     ],
+  },
+  {
+    path: "/adminPanel",
+    element: <AdminPanel />,
   },
 ]);
 
