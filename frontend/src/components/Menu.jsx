@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import patamon from "../assets/patamon.png";
 import digivice from "../assets/digivice.png";
 import "../scss/Menu.scss";
+import { AuthContext } from "../context/AuthContext";
 
 function Menu() {
   const [isClicked, setIsClicked] = useState(false);
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
   const toggleNav = () => {
     setIsClicked(!isClicked);
   };
@@ -51,7 +54,7 @@ function Menu() {
               }}
               className="navbar-li"
             >
-              Jeux
+              Game
             </Link>
           </li>
           <li>
@@ -62,7 +65,7 @@ function Menu() {
               }}
               className="navbar-li"
             >
-              Collection
+              Collections
             </Link>
           </li>
           <li>
@@ -84,8 +87,21 @@ function Menu() {
               }}
               className="navbar-li"
             >
-              Instruction
+              Instructions
             </Link>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                toggleNav();
+                logout();
+                navigate("/");
+              }}
+              className="navbar-li navbar-li-logout"
+            >
+              Logout
+            </button>
           </li>
         </ul>
       )}

@@ -74,7 +74,7 @@
           border-radius: 20px;
           padding: 2px 15px;
           font-size: clamp(1.2em, 5vw, 2em);
-          cursor: pointer;
+          cursor: $cursorMain;
           &:hover {
             box-shadow: 0px 0px 10px 0px $colorBlack;
           }
@@ -110,7 +110,7 @@
       .admin-edit {
         margin-top: 22px;
         padding: 7px;
-        cursor: pointer;
+        cursor: $cursorMain;
         border-radius: 10px;
         color: rgba(0, 0, 0, 0);
         background: url(../assets/crayon.png) no-repeat center;
