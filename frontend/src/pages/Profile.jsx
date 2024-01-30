@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import mafumafu from "../assets/mafumafu-mini.png";
 import terriermon from "../assets/terriermon.gif";
@@ -38,7 +38,11 @@ function Profile() {
           <p className="profile-email">{user.email}</p>
           <br />
           <div className="profile-footer">
-            {user.is_admin === 1 && <img src={adminPanel} alt="Admin Panel" />}
+            {user.is_admin === 1 && (
+              <Link to="/adminPanel">
+                <img src={adminPanel} alt="Admin Panel" />
+              </Link>
+            )}
             <button className="profile-footer-btn" type="button">
               Edit profile
             </button>
