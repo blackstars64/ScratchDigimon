@@ -114,7 +114,7 @@ function AdminPanel() {
                   />
                 )}
                 <tr key={data.id}>
-                  <td>
+                  <td className="admin-none">
                     <button
                       onClick={() => handleClick(data.id)}
                       type="button"
