@@ -1,14 +1,26 @@
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import "../scss/App.scss";
+import { AuthContext } from "../context/AuthContext";
+import mafumafu from "../assets/mafumafu-mini.png";
 
 function Page() {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <header>
         <section className="top-header">
-          <p>Dp:</p>
+          {user && (
+            <>
+              <div className="header-profile">
+                <img className="header-img" src={mafumafu} alt="mafumafu" />
+                <p className="header-username">{user.username}</p>
+              </div>
+              <p className="header-dp">DP: {user.digi_point}</p>
+            </>
+          )}
           <Menu />
         </section>
         <h1>DigiScratch</h1>
