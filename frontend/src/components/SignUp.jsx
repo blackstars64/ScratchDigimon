@@ -19,39 +19,37 @@ function SignUp({ handleSignIn }) {
     handleSignIn();
   };
   return (
-    <section className="register">
-      <h2>Sign up</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+    <section className="connect">
+      <h2 className="connect-h2">Sign up</h2>
+      <form className="connect-form" onSubmit={handleSubmit}>
         <input
+          className="connect-input"
           type="text"
           id="username"
           ref={refUsername}
-          placeholder="Enter your username"
+          placeholder="Username"
           required
         />
-        <label htmlFor="email">Email</label>
         <input
+          className="connect-input"
           type="email"
           id="email"
           ref={refEmail}
-          placeholder="Enter your email"
+          placeholder="Email"
           required
         />
-        <label htmlFor="password">Password</label>
         <input
+          className="connect-input"
           type="password"
           id="password"
           ref={refPassword}
-          placeholder="Enter your password"
+          placeholder="Password"
           required
         />
-        <button type="submit">Sign up</button>
+        <button className="connect-btn" type="submit">
+          Sign up
+        </button>
       </form>
-
-      <button type="button" onClick={handleSignIn}>
-        Sign in
-      </button>
     </section>
   );
 }
