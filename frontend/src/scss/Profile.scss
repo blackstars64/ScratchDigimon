@@ -1,0 +1,99 @@
+@import "../assets/variables.scss";
+
+.profile {
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    .profile-username {
+      font-size: clamp(1.2em, 5vw, 2em);
+      font-weight: 700;
+    }
+    .profile-img {
+      border-radius: 50px;
+      border: $borderBlack;
+      width: clamp(50px, 13vw, 80px);
+      height: clamp(50px, 13vw, 80px);
+    }
+  }
+  .profile-hr {
+    border: $borderBlack;
+    margin: 1rem 0;
+  }
+
+  .profile-email {
+    background: $backgroundGrey;
+    border: $borderBlack;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: clamp(1em, 5vw, 1.8em);
+    font-weight: 600;
+  }
+
+  .profile-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .profile-footer-btn {
+      background-color: $colorVioletDark;
+      border: $borderBlack;
+      color: $colorwhite;
+      border-radius: 20px;
+      padding: 1px 10px;
+      font-size: clamp(0.3em, 5vw, 1em);
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 0px 10px 0px $colorBlack;
+      }
+    }
+  }
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  .profile-username {
+    font-size: clamp(1.2em, 5vw, 2em);
+    font-weight: 700;
+  }
+  .profile-img {
+    border-radius: 50px;
+    border: $borderBlack;
+    width: clamp(50px, 13vw, 80px);
+    height: clamp(50px, 13vw, 80px);
+  }
+}
+.profile-hr {
+  border: $borderBlack;
+  margin: 1rem 0;
+}
+
+.profile-email {
+  background: $backgroundGrey;
+  border: $borderBlack;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: clamp(1em, 5vw, 1.8em);
+  font-weight: 600;
+}
+
+.profile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  .profile-footer-btn {
+    background-color: $colorVioletDark;
+    border: $borderBlack;
+    color: $colorwhite;
+    border-radius: 20px;
+    padding: 1px 10px;
+    font-size: clamp(0.3em, 5vw, 1em);
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 10px 0px $colorBlack;
+    }
+  }
+}

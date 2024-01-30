@@ -20,6 +20,12 @@ body {
     color: $colorViolet;
     margin-top: 1rem;
   }
+  .redirecting {
+    font-family: $QuartzoBold;
+    text-align: center;
+    font-size: clamp(2em, 8vw, 3em);
+    margin-bottom: 1.4rem;
+  }
 }
 
 #root {

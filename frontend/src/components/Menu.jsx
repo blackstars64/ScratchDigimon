@@ -34,7 +34,7 @@ function Menu() {
         <ul>
           <li>
             <Link
-              to="/"
+              to="/home"
               onClick={() => {
                 toggleNav();
               }}
