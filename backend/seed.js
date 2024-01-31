@@ -208,7 +208,7 @@ const seed = async () => {
         ('Machinedramon', 'https://digimon.shadowsmith.com/img/machinedramon.jpg', 'Mega'),
         ('Piedmon', 'https://digimon.shadowsmith.com/img/piedmon.jpg', 'Mega'),
         ('Puppetmon', 'https://digimon.shadowsmith.com/img/puppetmon.jpg', 'Mega'),
-        ('MetalEtemon', 'https://digimon.shadowsmith.com/img/metalEtemon.jpg', 'Mega'),
+        ('MetalEtemon', 'https://digimon.shadowsmith.com/img/metaletemon.jpg', 'Mega'),
         ('SaberLeomon', 'https://digimon.shadowsmith.com/img/saberleomon.jpg', 'Mega'),
         ('Apocalymon', 'https://digimon.shadowsmith.com/img/apocalymon.jpg', 'Mega'),
         ('HerculesKabuterimon', 'https://digimon.shadowsmith.com/img/herculeskabuterimon.jpg', 'Mega'),
