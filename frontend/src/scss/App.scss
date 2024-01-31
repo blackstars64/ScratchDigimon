@@ -8,18 +8,24 @@
 
 body {
   box-sizing: border-box;
-  background-image: url("../assets/background.png");
+  background-image: url("../assets/background.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   cursor: $cursor;
+
   h1 {
     font-family: $BalonkuRegular;
     text-align: center;
     font-size: clamp(1.8em, 5vw, 4em);
     color: $colorViolet;
     margin-top: 1rem;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   .redirecting {
     font-family: $QuartzoBold;
@@ -50,6 +56,8 @@ body {
     flex-direction: column;
     align-items: center;
     .app-terriermon {
+      position: relative;
+      z-index: 1;
       width: 80%;
       margin-top: -2rem;
       margin-bottom: 1rem;
@@ -112,4 +120,15 @@ header {
     width: clamp(13rem, 44vw, 24rem);
     cursor: $cursorMain;
   }
+}
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: $QuartzoBold;
+  font-size: clamp(3em, 8vw, 5em);
+  text-align: center;
 }

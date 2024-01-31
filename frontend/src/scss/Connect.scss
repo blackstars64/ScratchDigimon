@@ -40,6 +40,8 @@
       }
     }
     .connect-btn {
+      position: relative;
+      z-index: 2;
       background-color: $colorVioletDark;
       border: $borderBlack;
       color: $colorwhite;
