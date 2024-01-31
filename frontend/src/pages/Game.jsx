@@ -34,14 +34,14 @@ function Game() {
           width={250}
           height={300}
           image={ReveltCardT}
-          brushSize={5}
+          brushSize={7}
         />
       ) : (
         <ScratchCard
           width={350}
           height={450}
           image={ReveltCard}
-          brushSize={5}
+          brushSize={9}
         />
       )}
       <div>
