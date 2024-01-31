@@ -121,3 +121,14 @@ header {
     cursor: $cursorMain;
   }
 }
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: $QuartzoBold;
+  font-size: clamp(3em, 8vw, 5em);
+  text-align: center;
+}

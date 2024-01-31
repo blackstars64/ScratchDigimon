@@ -13,6 +13,8 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import AdminPanel from "./pages/AdminPanel";
 import { ScratchPercentProvider } from "./context/ScratchPercentContext";
+import { DigimonsProvider } from "./context/DigimonsContext";
+
 
 const router = createBrowserRouter([
   {
@@ -55,10 +57,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ScratchPercentProvider>
+<ScratchPercentProvider>
+    <DigimonsProvider>
+      <AuthProvider>
         <RouterProvider router={router} />
-      </ScratchPercentProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </DigimonsProvider>
+</ScratchPercentProvider>
   </React.StrictMode>
 );
