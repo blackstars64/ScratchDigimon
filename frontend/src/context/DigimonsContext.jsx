@@ -1,7 +1,6 @@
-import { createContext, useState, useEffect, useMemo, useContext } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { AuthContext } from "./AuthContext";
 
 const DigimonsContext = createContext();
 
@@ -9,9 +8,6 @@ function DigimonsProvider({ children }) {
   const [datasDigimon, setDatasDigimon] = useState(null);
   const [originalDatasDigimon, setOriginalDatasDigimon] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [dataCollected, setDataCollected] = useState(null);
-
-  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchDatasDigimon = () => {
@@ -27,17 +23,7 @@ function DigimonsProvider({ children }) {
         .catch((err) => console.error(err));
     };
 
-    const fetchCollectedDigimon = () => {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/collected/${user.id}`)
-        .then((res) => {
-          setDataCollected(res.data);
-        })
-        .catch((err) => console.error(err));
-    };
-
     fetchDatasDigimon();
-    fetchCollectedDigimon();
   }, []);
 
   const postCollectedDigimon = (userId, digimonId) => {
@@ -57,16 +43,9 @@ function DigimonsProvider({ children }) {
       setOriginalDatasDigimon,
       isLoading,
       setIsLoading,
-      dataCollected,
       postCollectedDigimon,
     }),
-    [
-      datasDigimon,
-      originalDatasDigimon,
-      isLoading,
-      dataCollected,
-      postCollectedDigimon,
-    ]
+    [datasDigimon, originalDatasDigimon, isLoading, postCollectedDigimon]
   );
 
   return (
