@@ -1,0 +1,30 @@
+@import "../assets/variables.scss";
+
+.nfound {
+  background-image: url(../assets/revelt-card2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 260px;
+  height: 360px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  .nfound-id {
+    color: $colorwhite;
+    text-align: end;
+    padding: 5px 9px;
+  }
+  .nfound-name {
+    color: $colorwhite;
+    text-align: center;
+    margin-top: 200px;
+  }
+  .nfound-buy {
+    width: 35px;
+    height: 35px;
+    border: $borderBlack;
+    border-radius: 5px;
+    margin-top: 22px;
+    margin-left: 5px;
+  }
+}
