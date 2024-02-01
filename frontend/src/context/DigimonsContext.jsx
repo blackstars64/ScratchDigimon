@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect, useMemo } from "react";
+import { createContext, useState, useEffect, useMemo, useContext } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { AuthContext } from "./AuthContext";
 
 const DigimonsContext = createContext();
 
@@ -8,9 +9,12 @@ function DigimonsProvider({ children }) {
   const [datasDigimon, setDatasDigimon] = useState(null);
   const [originalDatasDigimon, setOriginalDatasDigimon] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [dataCollected, setDataCollected] = useState(null);
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchDatas = () => {
+    const fetchDatasDigimon = () => {
       setIsLoading(true);
 
       axios
@@ -22,8 +26,28 @@ function DigimonsProvider({ children }) {
         })
         .catch((err) => console.error(err));
     };
-    fetchDatas();
+
+    const fetchCollectedDigimon = () => {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/collected/${user.id}`)
+        .then((res) => {
+          setDataCollected(res.data);
+        })
+        .catch((err) => console.error(err));
+    };
+
+    fetchDatasDigimon();
+    fetchCollectedDigimon();
   }, []);
+
+  const postCollectedDigimon = (userId, digimonId) => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/collected`, {
+        userId,
+        digimonId,
+      })
+      .catch((err) => console.error(err));
+  };
 
   const value = useMemo(
     () => ({
@@ -33,8 +57,16 @@ function DigimonsProvider({ children }) {
       setOriginalDatasDigimon,
       isLoading,
       setIsLoading,
+      dataCollected,
+      postCollectedDigimon,
     }),
-    [datasDigimon, originalDatasDigimon, isLoading]
+    [
+      datasDigimon,
+      originalDatasDigimon,
+      isLoading,
+      dataCollected,
+      postCollectedDigimon,
+    ]
   );
 
   return (
