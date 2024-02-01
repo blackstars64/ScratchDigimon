@@ -9,6 +9,7 @@ const userControllers = require("./controllers/userControllers");
 const authControllers = require("./controllers/authControllers");
 const digimonsControllers = require("./controllers/digimonsControllers");
 const messagesControllers = require("./controllers/messagesControllers");
+const collectedControllers = require("./controllers/collectedControllers");
 
 /* ******************************** USER *********************************** */
 // GET
@@ -61,6 +62,13 @@ router.put("/messages/:id", messagesControllers.edit);
 // DELETE
 router.delete("/messages/del/:id", messagesControllers.deleteMessage);
 router.delete("/messages/delUser/:id", messagesControllers.deleteUser);
+
+/* ******************************** COLLECTED *********************************** */
+// GET
+router.get("/collected/:id", collectedControllers.read);
+
+// POST
+router.post("/collected", collectedControllers.create);
 
 /* ************************************************************************* */
 router.use(verifyToken);
