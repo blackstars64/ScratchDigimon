@@ -16,10 +16,9 @@ import WinGame from "../components/WinGame";
 function Game() {
   const [gameState, setGameState] = useState("game");
   const [getDigiPoint, setGetDigiPoint] = useState(400);
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const { scrPercent } = useContext(scratchedPercentContext);
-  const { datasDigimon, setDigimon, digimon, dataCollected } =
-    useContext(DigimonsContext);
+  const { datasDigimon, setDigimon, digimon } = useContext(DigimonsContext);
   const touchMedia = useMediaQuery("(max-width: 840px)");
   if (!token) {
     const navigate = useNavigate();
@@ -47,17 +46,12 @@ function Game() {
 
   const clickRestart = () => {
     setGameState("game");
-    const dataNoCollected = datasDigimon.filter(
-      (data) => !dataCollected.includes(data.id)
-    );
-    setDigimon(Rendomiser(dataNoCollected).slice(0, 1)[0]);
+
+    setDigimon(Rendomiser(datasDigimon).slice(0, 1)[0]);
   };
 
   if (!digimon) {
-    const dataNoCollected = datasDigimon.filter(
-      (data) => !dataCollected.includes(data.id)
-    );
-    setDigimon(Rendomiser(dataNoCollected).slice(0, 1)[0]);
+    setDigimon(Rendomiser(datasDigimon).slice(0, 1)[0]);
   }
 
   if (gameState === "game") {
@@ -87,6 +81,7 @@ function Game() {
           digimon={digimon}
           setGameState={setGameState}
           getDigiPoint={getDigiPoint}
+          user={user}
         />
       </section>
     );

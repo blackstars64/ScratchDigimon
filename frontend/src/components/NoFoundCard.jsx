@@ -29,6 +29,7 @@ function NoFoundCard({ digimon, postCollectedDigimon, user, editdigiP }) {
     if (user.digi_point >= price) {
       postCollectedDigimon(user.id, digimonId);
       editdigiP(user.digi_point - price);
+      window.location.reload();
     } else {
       setInsufficientDp(true);
       setTimeout(() => {
