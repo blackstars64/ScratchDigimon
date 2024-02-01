@@ -6,11 +6,13 @@
 const UserManager = require("./models/UserManager");
 const MessagesManager = require("./models/MessagesManager");
 const DigimonsManager = require("./models/DigimonsManager");
+const CollectedsManager = require("./models/CollectedsManager");
 
 const managers = [
   UserManager,
   MessagesManager,
   DigimonsManager,
+  CollectedsManager,
   // Add other managers here
 ];
 
