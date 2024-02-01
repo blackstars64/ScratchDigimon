@@ -65,7 +65,7 @@ router.delete("/messages/delUser/:id", messagesControllers.deleteUser);
 
 /* ******************************** COLLECTED *********************************** */
 // GET
-router.get("/collected/:id", collectedControllers.read);
+router.get("/collected/:idUser", collectedControllers.read);
 
 // POST
 router.post("/collected", collectedControllers.create);

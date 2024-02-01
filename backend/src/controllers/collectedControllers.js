@@ -4,8 +4,8 @@ const table = require("../tables");
 
 const read = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const digimon = await table.digimons.readDigimonCollected(id);
+    const id = req.params.idUser;
+    const digimon = await table.collected.readDigimonCollected(id);
     if (digimon) {
       res.json(digimon);
     } else {
@@ -21,7 +21,7 @@ const read = async (req, res, next) => {
 const create = async (req, res, next) => {
   try {
     const { userId, digimonId } = req.body;
-    const result = await table.digimons.create({ digimonId, userId });
+    const result = await table.collected.create({ digimonId, userId });
     res.status(201).json(result);
   } catch (err) {
     next(err);
