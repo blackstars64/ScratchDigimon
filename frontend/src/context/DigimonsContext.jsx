@@ -10,7 +10,7 @@ function DigimonsProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchDatas = () => {
+    const fetchDatasDigimon = () => {
       setIsLoading(true);
 
       axios
@@ -22,8 +22,18 @@ function DigimonsProvider({ children }) {
         })
         .catch((err) => console.error(err));
     };
-    fetchDatas();
+
+    fetchDatasDigimon();
   }, []);
+
+  const postCollectedDigimon = (userId, digimonId) => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/collected`, {
+        userId,
+        digimonId,
+      })
+      .catch((err) => console.error(err));
+  };
 
   const value = useMemo(
     () => ({
@@ -33,8 +43,9 @@ function DigimonsProvider({ children }) {
       setOriginalDatasDigimon,
       isLoading,
       setIsLoading,
+      postCollectedDigimon,
     }),
-    [datasDigimon, originalDatasDigimon, isLoading]
+    [datasDigimon, originalDatasDigimon, isLoading, postCollectedDigimon]
   );
 
   return (

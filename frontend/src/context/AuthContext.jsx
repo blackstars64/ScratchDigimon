@@ -98,6 +98,29 @@ function AuthProvider({ children }) {
     auth();
   }, [token]);
 
+  const editdigiP = async (digipoint) => {
+    try {
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/${user.id}`,
+        {
+          digiPoint: digipoint,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (res.status === 200) {
+        const data = await res.data.user;
+        setUser(data);
+        window.location.reload();
+      } else {
+        throw new Error("Unauthorized");
+      }
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   const value = useMemo(
     () => ({
       user,
@@ -107,8 +130,9 @@ function AuthProvider({ children }) {
       login,
       logout,
       register,
+      editdigiP,
     }),
-    [user, token, loading, error, login, logout, register]
+    [user, token, loading, error, login, logout, register, editdigiP]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
