@@ -33,9 +33,10 @@ function Collection() {
     datasDigimon,
     originalDatasDigimon,
     postCollectedDigimon,
+    setDataCollected,
+    dataCollected,
   } = useContext(DigimonsContext);
 
-  const [dataCollected, setDataCollected] = useState(null);
   const [isCollectLoading, setIsCollectLoading] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
 
