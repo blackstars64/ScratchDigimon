@@ -1,0 +1,85 @@
+@import "../assets/variables.scss";
+
+.dcard {
+  background-image: url(../assets/card.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 260px;
+  height: 360px;
+  border-radius: 5px;
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 120px;
+  }
+
+  .dcard-head {
+    position: relative;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    @media screen and (max-width: 768px) {
+      top: 5px;
+      left: 5px;
+    }
+    .dcard-id {
+      background: $colorVioletDark;
+      position: absolute;
+      z-index: 5;
+      right: 11%;
+      top: 0%;
+      color: $colorwhite;
+      font-size: 0.8em;
+      padding: 0px 9px;
+      border-radius: 1px 10px 7px 21px;
+      border: $borderBlack;
+    }
+    .dcard-img {
+      width: 230px;
+      height: 230px;
+      border: $borderBlack;
+      border-radius: 5px;
+      @media screen and (max-width: 768px) {
+        width: 85px;
+        height: 85px;
+      }
+    }
+    .dcard-level {
+      position: absolute;
+      z-index: 5;
+      left: -2%;
+      bottom: 0%;
+      color: $colorwhite;
+      background: $colorVioletDark;
+      font-size: 0.8em;
+      padding: 0px 9px;
+      border-radius: 1px 10px 7px 21px;
+      border: $borderBlack;
+      @media screen and (max-width: 768px) {
+        font-size: 0.7em;
+      }
+    }
+  }
+  .dcard-f-name {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    @media screen and (max-width: 768px) {
+      height: 34px;
+    }
+    .dcard-name {
+      background-color: $colorViolet;
+      color: $colorwhite;
+      font-family: $QuartzoBold;
+      border: $borderBlack;
+      font-size: 1.4em;
+      padding: 0px 9px;
+      border-radius: 0px 24px 0px 21px;
+      @media screen and (max-width: 768px) {
+        font-size: 0.7em;
+        font-family: "Courier New", Courier, monospace;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@import "../assets/variables.scss";
+
+.nfound {
+  background-image: url(../assets/revelt-card2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 272px;
+  height: 358px;
+  border-radius: 5px;
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 120px;
+  }
+  .nfound-id {
+    color: $colorwhite;
+    text-align: end;
+    padding: 5px 9px;
+  }
+  .nfound-name {
+    color: $colorwhite;
+    text-align: center;
+    margin-top: 200px;
+    @media screen and (max-width: 768px) {
+      margin-top: 0px;
+      font-size: 0.8em;
+    }
+  }
+  .nfound-buy {
+    width: 35px;
+    height: 35px;
+    border: $borderBlack;
+    border-radius: 5px;
+    margin-top: 22px;
+    margin-left: 5px;
+    background-image: url(../assets/digiPoint.png);
+    background-color: rgba(240, 248, 255, 0);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: $cursorMain;
+    @media screen and (max-width: 768px) {
+      margin-top: 42px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.no-monay {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(0.78em, 3.5vw, 1.7em);
+  background: $colorViolet;
+  padding: 10px;
+  border: $borderBlack;
+  border-radius: $borderBlack;
+  color: $colorwhite;
+  font-weight: 900;
+  border-radius: 15px;
+}

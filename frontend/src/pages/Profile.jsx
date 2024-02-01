@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import mafumafu from "../assets/mafumafu-mini.png";
 import terriermon from "../assets/terriermon.gif";
@@ -9,6 +10,15 @@ import "../scss/Profile.scss";
 
 function Profile() {
   const { user, token } = useContext(AuthContext);
+  const [isEdited, setIsEdited] = useState(false);
+
+  const usernameRef = useRef();
+  const emailRef = useRef();
+
+  if (!user) {
+    return <p className="Loading">Loading in progress...</p>;
+  }
+
   if (!token) {
     const navigate = useNavigate();
     setTimeout(() => {
@@ -24,6 +34,24 @@ function Profile() {
       </section>
     );
   }
+  const handleClick = () => {
+    setIsEdited(!isEdited);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/api/users/${user.id}`, {
+        username: usernameRef.current.value,
+        email: emailRef.current.value,
+      })
+      .then(() => {
+        setIsEdited(false);
+        window.location.reload();
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <section className="connect">
@@ -43,10 +71,35 @@ function Profile() {
                 <img src={adminPanel} alt="Admin Panel" />
               </Link>
             )}
-            <button className="profile-footer-btn" type="button">
-              Edit profile
+
+            <button
+              className="profile-footer-btn"
+              type="button"
+              onClick={handleClick}
+            >
+              {!isEdited ? "Edit profile" : "Cancel"}
             </button>
           </div>
+          {isEdited && (
+            <form className="profile-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                defaultValue={user.username}
+                className="profile-input"
+                ref={usernameRef}
+              />
+              <input
+                type="email"
+                defaultValue={user.email}
+                className="profile-input"
+                ref={emailRef}
+              />
+
+              <button className="profile-f-btn" type="submit">
+                Submit
+              </button>
+            </form>
+          )}
         </>
       )}
     </section>
