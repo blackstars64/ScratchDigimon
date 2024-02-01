@@ -12,6 +12,7 @@ import { DigimonsContext } from "../context/DigimonsContext";
 import SubmitScratch from "../components/SubmitScratch";
 import LoseGame from "../components/LoseGame";
 import WinGame from "../components/WinGame";
+import "../scss/Game.scss";
 
 function Game() {
   const [gameState, setGameState] = useState("game");
@@ -56,8 +57,7 @@ function Game() {
 
   if (gameState === "game") {
     return (
-      <section>
-        <p>{getDigiPoint}</p>
+      <section className="game">
         {touchMedia ? (
           <ScratchCard
             width={250}
@@ -73,9 +73,9 @@ function Game() {
             brushSize={9}
           />
         )}
-        <div>
-          <p>DP: </p>
-          <p>Percent: {scrPercent}</p>
+        <div className="game-stats">
+          <p className="game-p">Win {getDigiPoint} DP </p>
+          <p className="game-p">{scrPercent} %</p>
         </div>
         <SubmitScratch
           digimon={digimon}

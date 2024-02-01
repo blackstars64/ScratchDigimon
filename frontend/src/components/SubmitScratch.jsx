@@ -25,7 +25,7 @@ function SubmitScratch({ digimon, setGameState, getDigiPoint }) {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="solution-form" onSubmit={handleSubmit}>
       <input
         placeholder="Who is this digimon ?"
         type="text"
