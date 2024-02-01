@@ -93,7 +93,7 @@ const edit = async (req, res) => {
       return res.status(400).json({ message: "Empty body" });
     }
 
-    const { username, email, password } = req.body;
+    const { username, email, password, digiPoint } = req.body;
 
     const haveUser = await tables.user.read(id);
 
@@ -111,6 +111,9 @@ const edit = async (req, res) => {
     }
     if (password !== undefined) {
       updatedFields.password = password;
+    }
+    if (digiPoint !== undefined) {
+      updatedFields.digi_point = digiPoint;
     }
 
     const affectedRows = await tables.user.update(id, updatedFields);
