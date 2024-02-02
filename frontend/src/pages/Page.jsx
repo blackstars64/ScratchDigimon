@@ -8,6 +8,9 @@ import mafumafu from "../assets/mafumafu-mini.png";
 
 function Page() {
   const { user } = useContext(AuthContext);
+  if (!user) {
+    return <p className="Loading">Loading in progress...</p>;
+  }
   return (
     <>
       <header>
@@ -16,9 +19,13 @@ function Page() {
             <>
               <div className="header-profile">
                 <img className="header-img" src={mafumafu} alt="mafumafu" />
-                <p className="header-username">{user.username}</p>
+                {user && user.username && (
+                  <p className="header-username">{user?.username}</p>
+                )}
               </div>
-              <p className="header-dp">DP: {user.digi_point}</p>
+              {user && user.digi_point && (
+                <p className="header-dp">DP: {user?.digi_point}</p>
+              )}
             </>
           )}
           <Menu />

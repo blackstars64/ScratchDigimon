@@ -8,9 +8,10 @@ function DigimonsProvider({ children }) {
   const [datasDigimon, setDatasDigimon] = useState(null);
   const [originalDatasDigimon, setOriginalDatasDigimon] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [digimon, setDigimon] = useState(null);
 
   useEffect(() => {
-    const fetchDatasDigimon = () => {
+    const fetchDatas = () => {
       setIsLoading(true);
 
       axios
@@ -22,8 +23,7 @@ function DigimonsProvider({ children }) {
         })
         .catch((err) => console.error(err));
     };
-
-    fetchDatasDigimon();
+    fetchDatas();
   }, []);
 
   const postCollectedDigimon = (userId, digimonId) => {
@@ -34,7 +34,7 @@ function DigimonsProvider({ children }) {
       })
       .catch((err) => console.error(err));
   };
-
+  const [dataCollected, setDataCollected] = useState(null);
   const value = useMemo(
     () => ({
       datasDigimon,
@@ -43,9 +43,25 @@ function DigimonsProvider({ children }) {
       setOriginalDatasDigimon,
       isLoading,
       setIsLoading,
+      setDigimon,
+      digimon,
       postCollectedDigimon,
+      setDataCollected,
+      dataCollected,
     }),
-    [datasDigimon, originalDatasDigimon, isLoading, postCollectedDigimon]
+    [
+      datasDigimon,
+      originalDatasDigimon,
+      isLoading,
+      digimon,
+      setDigimon,
+      setIsLoading,
+      setDatasDigimon,
+      setOriginalDatasDigimon,
+      postCollectedDigimon,
+      setDataCollected,
+      dataCollected,
+    ]
   );
 
   return (

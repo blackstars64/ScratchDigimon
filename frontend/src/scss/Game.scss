@@ -1,0 +1,84 @@
+@import "../assets/variables.scss";
+
+.game {
+  .game-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    .game-p {
+      color: $colorwhite;
+      background: $colorViolet;
+      padding: 2px 10px;
+      border-radius: 5px;
+      border: $borderBlack;
+    }
+  }
+  .solution-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    .solution-input {
+      width: 80%;
+      padding: 5px;
+      border: $borderBlack;
+      border-radius: 15px;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      text-align: center;
+      color: $colorwhite;
+      background: $colorVioletDark;
+      box-shadow: inset 0px 0px 6px 1px $colorBlack;
+      &::placeholder {
+        color: $colorwhite;
+      }
+      &:focus {
+        outline: $borderBlack;
+      }
+    }
+  }
+}
+.solution-btn {
+  padding: 5px 10px;
+  border: $borderBlack;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  border-radius: 15px;
+  color: $colorwhite;
+  background: $colorViolet;
+  &:hover {
+    box-shadow: $boxShadow;
+  }
+}
+
+.lose-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.win-c-img {
+  background: url(../assets/card.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  width: clamp(250px, 22vw, 246px);
+  height: clamp(322px, 22vh, 425px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+  border: $borderBlack;
+  .win-img {
+    width: 80%;
+    height: 65%;
+    border: 4px solid $colorBlack;
+    border-radius: 15px;
+  }
+  .win-dname {
+    font-size: clamp(1em, 2vw, 1.5em);
+    color: $colorwhite;
+    padding: 2px 10px;
+    font-weight: 700;
+  }
+}

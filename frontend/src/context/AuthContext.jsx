@@ -11,6 +11,8 @@ function AuthProvider({ children }) {
   const [token, setToken] = useSessionStorage("token", "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [digiPoint, setDigiPoint] = useState(0);
+  const [usernames, setUsername] = useState("");
 
   const login = async (email, password) => {
     try {
@@ -112,7 +114,6 @@ function AuthProvider({ children }) {
       if (res.status === 200) {
         const data = await res.data.user;
         setUser(data);
-        window.location.reload();
       } else {
         throw new Error("Unauthorized");
       }
@@ -131,8 +132,25 @@ function AuthProvider({ children }) {
       logout,
       register,
       editdigiP,
+      setDigiPoint,
+      digiPoint,
+      setUsername,
+      usernames,
     }),
-    [user, token, loading, error, login, logout, register, editdigiP]
+    [
+      user,
+      token,
+      loading,
+      error,
+      login,
+      logout,
+      register,
+      editdigiP,
+      setDigiPoint,
+      digiPoint,
+      setUsername,
+      usernames,
+    ]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
