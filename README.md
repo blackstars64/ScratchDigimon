@@ -1,81 +1,47 @@
-## Concept
+## ScratchDigimon
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+Welcome to a game where you have to find your favorite Digimon thanks to a scratching system! A simple and entertaining project to pass the time. This game lets you play while earning DigiPoint to expand your collection.
 
-## Setup & Use
+## Features
 
-### Windows users
+- **ScratchDigimon Game** Play by scratching the card and guessing which Digimon it is. The more you scratch, the fewer Digipoints you'll earn.
 
-Be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
+- **Your collection** A collection page where you can see and buy your favorite digimons.
 
-```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+- **Authentication** Sign up quickly and log in to start playing.
 
-### Project Initialization
+- **Admin** As administrator, you have access to the panel to modify digimons.
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm install`
-- Create environment files (`.env`) in both `backend` and `frontend`: you can copy `.env.sample` files as starters (**don't** delete them)
+- ### Technologies used:
 
-### Available Commands
+  - **Node.js and Express.js:** The server is built with Node.js and Express.js to manage requests and responses.
+  - **SQL:** The database uses SQL to store information on users, digimons and more.
+  - **Jsonwebtoken:** Jsonwebtoken is used to manage authentication and game security.
+  - **React.js:** The front-end of the game is developed with React.js to deliver an interactive user experience.
+  - **Axios:** Axios is used to make HTTP requests between client and server.
+  - **Sass:** Styles are managed with Sass, offering a more modular and organized CSS structure.
+
+## Install
+
+- `git clone git@github.com:blackstars64/ScratchDigimon.gitendence` : Clone the repo
+- `npm install` : installed dependence script
+
+## Setup
+
+- In the `backend folder`, `copy` and `paste` the `.env.sample` and rename it `.env`.
+- The same action for the `.en.sample`, but in the `frontend folder`.
+- `Modify` the two `.env` file with the necessary information in fontend and backend.
+
+## Starting
 
 - `db:migrate` : Run the database migration script
 - `db:seed` : Run the database seed script
 - `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools (will be executed on every _commit_, and refuse unclean code)
 
-## FAQ
+### The server will be accessible at _http://localhost:3310_ and the client at _http://localhost:3000_.
 
-### Tools
+## some pictures
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
-
-## Deployment with Traefik
-
-> ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
-
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
-
-- SSH_HOST : IP address of your VPS
-- SSH_USER : SSH login to your VPS
-- SSH_PASSWORD : SSH connection password to your VPS
-
-And a public variable from the tab `/settings/variables/actions` :
-
-- PROJECT_NAME : the name of the project used to create the subdomain.
-
-> ⚠️ Warning : underscores are not allowed. They can cause trouble with the let's encrypt certificate
-
-Use this same tab to add the other environment variables required for the project if any.
-
-Only the backend will be accessible. The root path `"/"` will redirect to the dist folder on your frontend. In order to allow that, please uncomment the line as explain on `backend/src/app.js` (Line 102).
-Because the backend will serve the front, the global variable VITE_BACKEND_URL will be set with an empty string.
-
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
-
-### About the database
-
-The database is automaticaly deployed with the name of your repo. During the build of the projet (`docker-entry.sh`), the `node migrate.js` command is executed in the backend. If you want to seed automaticaly your database using the `seed.js` script, replace the command _build_ on you `backend/package.json` by `node migrate.js && node seed.js`.
-
-### About public assets (pictures, fonts...)
-
-Don't use any public folder on your frontend. This folder won't be accessible online. You may move your public assets in the `backend/public` folder. Prefer [static assets](https://vitejs.dev/guide/assets) when possible.
-
-### About Logs
-
-If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
-Then, go on your specific project and run  `docker compose logs -t -f`.
-
-https://digimon.fandom.com/fr/wiki/Agumon_(Adventure:)
+![Capture d'écran du jeu](https://i.postimg.cc/DyZW4C1B/Capture-d-cran-2024-02-02-123531.png)
+![Capture d'écran du jeu](https://i.postimg.cc/VNYP5hCN/Capture-d-cran-2024-02-02-123700.png)
+![Capture d'écran du jeu](https://i.postimg.cc/D0qKS3B8/Capture-d-cran-2024-02-02-123254.png)
