@@ -33,15 +33,12 @@ function Collection() {
     datasDigimon,
     originalDatasDigimon,
     postCollectedDigimon,
+    setDataCollected,
+    dataCollected,
   } = useContext(DigimonsContext);
 
-  const [dataCollected, setDataCollected] = useState(null);
   const [isCollectLoading, setIsCollectLoading] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
-
-  if (!user) {
-    return <p className="Loading">Loading in progress...</p>;
-  }
 
   useEffect(() => {
     const fetchCollectedDigimon = () => {
@@ -58,7 +55,17 @@ function Collection() {
     fetchCollectedDigimon();
   }, []);
 
-  if (!dataCollected || !datasDigimon || isCollectLoading) {
+  if (
+    !dataCollected ||
+    !datasDigimon ||
+    isCollectLoading ||
+    !user ||
+    !token ||
+    !originalDatasDigimon ||
+    !postCollectedDigimon ||
+    !editdigiP ||
+    !setDatasDigimon
+  ) {
     return <p className="Loading">Loading in progress...</p>;
   }
 

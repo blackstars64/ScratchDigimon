@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { useMediaQuery } from "usehooks-ts";
 import { scratchedPercentContext } from "../context/ScratchPercentContext";
 import "../scss/ScratchCard.scss";
+import { DigimonsContext } from "../context/DigimonsContext";
 
 function ScratchCard({ width, height, image, brushSize }) {
   const touchMedia = useMediaQuery("(max-width: 840px)");
@@ -16,6 +17,7 @@ function ScratchCard({ width, height, image, brushSize }) {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [scratchedPercent, setScratchedPercent] = useState(0);
   const { setScrPercent } = useContext(scratchedPercentContext);
+  const { digimon } = useContext(DigimonsContext);
   const canvasRef = useRef(null);
   const imageRef = useRef(null);
 
@@ -94,11 +96,9 @@ function ScratchCard({ width, height, image, brushSize }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         />
-        <img
-          className="s-image"
-          src="https://digimon.shadowsmith.com/img/koromon.jpg"
-          alt="img"
-        />
+        {digimon && (
+          <img className="s-image" src={digimon.img} alt={digimon.name} />
+        )}
         <img
           ref={imageRef}
           src={image}
@@ -180,15 +180,17 @@ function ScratchCard({ width, height, image, brushSize }) {
           onMouseMove={scratch}
           onMouseUp={handleMouseUp}
         />
-        <img
-          className="s-image"
-          src="https://digimon.shadowsmith.com/img/koromon.jpg"
-          alt="img"
-          onCopy="return false"
-          onCut="return false"
-          onDrag="return false"
-          onDrop="return false"
-        />
+        {digimon && (
+          <img
+            className="s-image"
+            src={digimon.img}
+            alt={digimon.name}
+            onCopy="return false"
+            onCut="return false"
+            onDrag="return false"
+            onDrop="return false"
+          />
+        )}
 
         <img
           className="sc-image"
