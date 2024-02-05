@@ -30,7 +30,7 @@ Welcome to a game where you have to find your favorite Digimon thanks to a scrat
 
 - In the `backend folder`, `copy` and `paste` the `.env.sample` and rename it `.env`.
 - The same action for the `.env.sample`, but in the `frontend folder`.
-- `Modify` the two `.env` file with the necessary information in frontend and backend.
+- `Modify` the two `.env` file with the necessary information in backend.
 
 ## Starting
 
